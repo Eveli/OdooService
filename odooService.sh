@@ -43,11 +43,11 @@ git clone https://www.github.com/odoo/odoo --depth 1 --branch $VERSION_ODOO.0
 
 #IF VERSION CLONE > 10: INSTALL WITH PYTHON 3
 if [ $VERSION_ODOO -gt 10 ]; then
-        pip3 install -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/doc/requirements.txt
-        pip3 install -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/requirements.txt
+        pip3 install --no-cache-dir -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/doc/requirements.txt
+        pip3 install --no-cache-dir -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/requirements.txt
 else
-        pip install -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/doc/requirements.txt
-        pip install -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/requirements.txt
+        pip install --no-cache-dir -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/doc/requirements.txt
+        pip install --no-cache-dir -r /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/odoo/requirements.txt
 fi
 
 #MAKE INSTANCE SERVICE
@@ -135,7 +135,7 @@ ln -s /etc/nginx/sites-available/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA /etc/ngin
 systemctl daemon-reload
 systemctl restart nginx
 
-#APPEND ODOO USER TO SUDOERS
+#APPEND ODOO USER TO SUDORES
 sudo adduser odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA sudo
 
 # RUN INSTANCE
