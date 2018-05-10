@@ -35,7 +35,7 @@ su - postgres -c "createuser -dRS odoo-v${VERSION_ODOO}-${NOMBRE_INSTANCIA} --cl
 #CREATE DIRECTORY STRUCTURE 
 mkdir -p /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/data /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src/addons /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/logs 
 cd /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA/src
-git clone https://www.github.com/odoo/odoo --depth 1 --branch 11.0
+git clone https://www.github.com/odoo/odoo --depth 1 --branch $VERSION_ODOO.0
 # git clone own repo
 
 #IF VERSION CLONE > 10: INSTALL WITH PYTHON 3
