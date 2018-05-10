@@ -13,9 +13,10 @@
 # REQUEST DATA
 echo "Welcome"
 echo
+read -p "Hi there!! lets go!" 
 read -p "Instance name: " NOMBRE_INSTANCIA
 read -p "Odoo version: " VERSION_ODOO
-read -p "Postgres version: " VERSION_PG
+read -p "Postgres version: (9.x) " VERSION_PG
 read -p "Postgres port: " PUERTO_PG
 read -p "xmlrpc port: " PUERTO_XMLRPC
 read -p "admin passwd: " ADMIN_PASSWD
