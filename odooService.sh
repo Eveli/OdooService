@@ -21,7 +21,13 @@ read -p "xmlrpc port: " PUERTO_XMLRPC
 read -p "admin passwd: " ADMIN_PASSWD
 
 #INSTALL DEPENDENCES
-apt install git postgresql nginx python-pip python3-pip zlib1g-dev python-lxml python3-lxml python-libxml2 python3-libxml2 libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev
+apt install git postgresql nginx python-pip python3-pip zlib1g-dev python-lxml python3-lxml python-libxml2 python3-libxml2 libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev -y
+
+#Verificar si se puede instalar npm en el sistema sino hacer lo siguiente:
+apt install -y curl
+apt install -y nodejs
+ln -s /usr/bin/nodejs /usr/bin/node
+npm install -g less
 
 adduser --system --group --home /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA --shell /bin/bash  odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA
 su - postgres -c "pg_createcluster -p $PUERTO_PG $VERSION_PG odoo_v${VERSION_ODOO}_${NOMBRE_INSTANCIA}";
