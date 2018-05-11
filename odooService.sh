@@ -5,7 +5,6 @@
 
 #NOMBRE_INSTANCIA="nueva"
 #VERSION_ODOO=11
-#VERSION_PG=9.6
 #PUERTO_PG=5439
 #PUERTO_XMLRPC=8076
 #ADMIN_PASSWD=MIRNKAD22OU
@@ -16,7 +15,6 @@ echo
 read -p "Hi there!! lets go!" 
 read -p "Instance name: " NOMBRE_INSTANCIA
 read -p "Odoo version: " VERSION_ODOO
-read -p "Postgres version: (9.x) " VERSION_PG
 read -p "Postgres port: " PUERTO_PG
 read -p "xmlrpc port: " PUERTO_XMLRPC
 read -p "admin passwd: " ADMIN_PASSWD
@@ -24,11 +22,15 @@ read -p "admin passwd: " ADMIN_PASSWD
 #INSTALL DEPENDENCES
 apt install git postgresql nginx python-pip python3-pip zlib1g-dev python-lxml python3-lxml python-libxml2 python3-libxml2 libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev -y
 
-#Verificar si se puede instalar npm en el sistema sino hacer lo siguiente:
+#Verificar si se puede instalar npm en el sistema, sino hacer lo siguiente:
 apt install -y curl
+curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
 apt install -y nodejs
 ln -s /usr/bin/nodejs /usr/bin/node
 npm install -g less
+
+#POSTGRES CURRENT VERSION
+VERSION_PG=$(psql -V | egrep -o '[0-9]{1,}\.[0-9]{1,}')
 
 adduser --system --group --home /home/odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA --shell /bin/bash  odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA
 su - postgres -c "pg_createcluster -p $PUERTO_PG $VERSION_PG odoo_v${VERSION_ODOO}_${NOMBRE_INSTANCIA}";
