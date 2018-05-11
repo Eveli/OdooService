@@ -9,6 +9,11 @@
 #PUERTO_XMLRPC=8076
 #ADMIN_PASSWD=MIRNKAD22OU
 
+if [[ "$EUID" -ne 0 ]]; then
+        echo "Sorry, you need to run this as root"
+        exit 1
+fi
+
 # REQUEST DATA
 echo "Welcome"
 echo
@@ -149,4 +154,4 @@ sudo adduser odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA sudo
 
 # RUN INSTANCE
 systemctl start odoo-v$VERSION_ODOO-$NOMBRE_INSTANCIA
-exit
+exit 2
